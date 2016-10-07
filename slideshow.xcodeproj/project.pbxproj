@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D90BAC331DA7A2EB00461B6F /* SwipeCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90BAC321DA7A2EB00461B6F /* SwipeCardsViewController.swift */; };
 		D91463721DA64E82005F482B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463711DA64E82005F482B /* AppDelegate.swift */; };
 		D91463741DA64E82005F482B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463731DA64E82005F482B /* ViewController.swift */; };
 		D91463771DA64E82005F482B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D91463751DA64E82005F482B /* Main.storyboard */; };
@@ -17,6 +18,9 @@
 		D914639F1DA6620A005F482B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463731DA64E82005F482B /* ViewController.swift */; };
 		D91463A11DA66E8E005F482B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463A01DA66E8E005F482B /* Card.swift */; };
 		D91463A21DA66F08005F482B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463A01DA66E8E005F482B /* Card.swift */; };
+		D97894A21DA7C6EA008AD971 /* SlidableScrolableTextContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97894A11DA7C6EA008AD971 /* SlidableScrolableTextContent.swift */; };
+		D9D16CA11DA7FA9E00C4A7EA /* ScrolableStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D16CA01DA7FA9E00C4A7EA /* ScrolableStackViewController.swift */; };
+		D9D16CA31DA7FAD500C4A7EA /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D16CA21DA7FAD500C4A7EA /* GlobalFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D90BAC321DA7A2EB00461B6F /* SwipeCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardsViewController.swift; sourceTree = "<group>"; };
 		D914636E1DA64E82005F482B /* slideshow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slideshow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91463711DA64E82005F482B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D91463731DA64E82005F482B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +56,9 @@
 		D91463911DA64E82005F482B /* slideshowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideshowUITests.swift; sourceTree = "<group>"; };
 		D91463931DA64E82005F482B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D91463A01DA66E8E005F482B /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		D97894A11DA7C6EA008AD971 /* SlidableScrolableTextContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidableScrolableTextContent.swift; sourceTree = "<group>"; };
+		D9D16CA01DA7FA9E00C4A7EA /* ScrolableStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrolableStackViewController.swift; sourceTree = "<group>"; };
+		D9D16CA21DA7FAD500C4A7EA /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +116,10 @@
 				D914637A1DA64E82005F482B /* LaunchScreen.storyboard */,
 				D914637D1DA64E82005F482B /* Info.plist */,
 				D91463A01DA66E8E005F482B /* Card.swift */,
+				D90BAC321DA7A2EB00461B6F /* SwipeCardsViewController.swift */,
+				D97894A11DA7C6EA008AD971 /* SlidableScrolableTextContent.swift */,
+				D9D16CA01DA7FA9E00C4A7EA /* ScrolableStackViewController.swift */,
+				D9D16CA21DA7FAD500C4A7EA /* GlobalFunctions.swift */,
 			);
 			path = slideshow;
 			sourceTree = "<group>";
@@ -262,7 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D97894A21DA7C6EA008AD971 /* SlidableScrolableTextContent.swift in Sources */,
 				D91463741DA64E82005F482B /* ViewController.swift in Sources */,
+				D9D16CA31DA7FAD500C4A7EA /* GlobalFunctions.swift in Sources */,
+				D90BAC331DA7A2EB00461B6F /* SwipeCardsViewController.swift in Sources */,
+				D9D16CA11DA7FA9E00C4A7EA /* ScrolableStackViewController.swift in Sources */,
 				D91463A11DA66E8E005F482B /* Card.swift in Sources */,
 				D91463721DA64E82005F482B /* AppDelegate.swift in Sources */,
 			);
@@ -499,6 +515,7 @@
 				D91463981DA64E82005F482B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D91463991DA64E82005F482B /* Build configuration list for PBXNativeTarget "slideshowTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +524,7 @@
 				D914639B1DA64E82005F482B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D914639C1DA64E82005F482B /* Build configuration list for PBXNativeTarget "slideshowUITests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +533,7 @@
 				D914639E1DA64E82005F482B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

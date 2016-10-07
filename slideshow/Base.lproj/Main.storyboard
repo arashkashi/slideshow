@@ -18,44 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffj-do-m99">
+                                <rect key="frame" x="70" y="297" width="460" height="219"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drc-w4-3Jn">
                                 <rect key="frame" x="70" y="70" width="460" height="195"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZj-Qm-4Xa">
-                                <rect key="frame" x="267" y="382" width="65" height="30"/>
-                                <state key="normal" title="Slide Left"/>
-                                <connections>
-                                    <action selector="slideToLeft:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Njy-Ae-YE1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMS-ya-n3D">
-                                <rect key="frame" x="263" y="307" width="74" height="30"/>
-                                <state key="normal" title="Slide Right"/>
-                                <connections>
-                                    <action selector="slideToRight:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ERm-4g-BGS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDq-g5-PCk">
-                                <rect key="frame" x="276" y="478" width="48" height="30"/>
-                                <state key="normal" title="shuffle"/>
-                                <connections>
-                                    <action selector="shuffle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yt1-Df-htd"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="drc-w4-3Jn" secondAttribute="bottom" constant="335" id="4TV-W1-Fsf"/>
-                            <constraint firstItem="DZj-Qm-4Xa" firstAttribute="top" secondItem="TMS-ya-n3D" secondAttribute="bottom" constant="45" id="58c-fC-GTS"/>
+                            <constraint firstItem="ffj-do-m99" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="6vG-rQ-pRC"/>
                             <constraint firstItem="drc-w4-3Jn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="An7-0m-Q8a"/>
-                            <constraint firstItem="TMS-ya-n3D" firstAttribute="top" secondItem="drc-w4-3Jn" secondAttribute="bottom" constant="42" id="Q9b-Rj-XlS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ffj-do-m99" secondAttribute="trailing" constant="50" id="KPb-VZ-9Av"/>
+                            <constraint firstItem="ffj-do-m99" firstAttribute="top" secondItem="drc-w4-3Jn" secondAttribute="bottom" constant="32" id="RNf-OE-B91"/>
                             <constraint firstAttribute="trailingMargin" secondItem="drc-w4-3Jn" secondAttribute="trailing" constant="50" id="V0L-zi-88G"/>
-                            <constraint firstItem="WDq-g5-PCk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wj7-NT-AhB"/>
-                            <constraint firstItem="WDq-g5-PCk" firstAttribute="top" secondItem="DZj-Qm-4Xa" secondAttribute="bottom" constant="66" id="dMa-eO-NdX"/>
-                            <constraint firstItem="DZj-Qm-4Xa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="duj-As-zDo"/>
                             <constraint firstItem="drc-w4-3Jn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="iRg-dk-nSu"/>
-                            <constraint firstItem="TMS-ya-n3D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tM2-Ej-BIe"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ffj-do-m99" secondAttribute="bottom" constant="84" id="yx1-1f-cGX"/>
                         </constraints>
                     </view>
                     <connections>
@@ -64,6 +45,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="285" y="251"/>
         </scene>
     </scenes>
 </document>
