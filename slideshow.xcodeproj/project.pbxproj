@@ -14,6 +14,9 @@
 		D914637C1DA64E82005F482B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D914637A1DA64E82005F482B /* LaunchScreen.storyboard */; };
 		D91463871DA64E82005F482B /* slideshowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463861DA64E82005F482B /* slideshowTests.swift */; };
 		D91463921DA64E82005F482B /* slideshowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463911DA64E82005F482B /* slideshowUITests.swift */; };
+		D914639F1DA6620A005F482B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463731DA64E82005F482B /* ViewController.swift */; };
+		D91463A11DA66E8E005F482B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463A01DA66E8E005F482B /* Card.swift */; };
+		D91463A21DA66F08005F482B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463A01DA66E8E005F482B /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,7 @@
 		D914638D1DA64E82005F482B /* slideshowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = slideshowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91463911DA64E82005F482B /* slideshowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideshowUITests.swift; sourceTree = "<group>"; };
 		D91463931DA64E82005F482B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D91463A01DA66E8E005F482B /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				D91463781DA64E82005F482B /* Assets.xcassets */,
 				D914637A1DA64E82005F482B /* LaunchScreen.storyboard */,
 				D914637D1DA64E82005F482B /* Info.plist */,
+				D91463A01DA66E8E005F482B /* Card.swift */,
 			);
 			path = slideshow;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				TargetAttributes = {
 					D914636D1DA64E82005F482B = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = Z46627LUPQ;
 					};
 					D91463811DA64E82005F482B = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -257,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D91463741DA64E82005F482B /* ViewController.swift in Sources */,
+				D91463A11DA66E8E005F482B /* Card.swift in Sources */,
 				D91463721DA64E82005F482B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +272,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D914639F1DA6620A005F482B /* ViewController.swift in Sources */,
+				D91463A21DA66F08005F482B /* Card.swift in Sources */,
 				D91463871DA64E82005F482B /* slideshowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,10 +410,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = slideshow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ss.slideshow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -412,10 +424,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = slideshow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ss.slideshow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

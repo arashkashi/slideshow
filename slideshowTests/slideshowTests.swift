@@ -13,24 +13,38 @@ class slideshowTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCase_one() {
+        
+        let vc = ViewController()
+        
+        let views = vc.getMeViews(8)
+        
+        let offsets = vc.shuffleOffsets(views, eachOffset: 5.0, numberOfSlidedCards: 2)
+        
+        XCTAssertEqual(offsets.count, 2)
+        XCTAssertEqual(offsets[0], 10.0)
+        XCTAssertEqual(offsets[1], 5.0)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testCase_two() {
+        
+        let vc = ViewController()
+        
+        let views = vc.getMeViews(3)
+        
+        let offsets = vc.shuffleOffsets(views, eachOffset: 5.0, numberOfSlidedCards: 4)
+        
+        XCTAssertEqual(offsets.count, 2)
+        XCTAssertEqual(offsets[1], 5.0)
+        XCTAssertEqual(offsets[0], 10.0)
     }
+
     
 }
