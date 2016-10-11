@@ -86,7 +86,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     
     // This function puts all the cards aligned well on top of eachother.
     // The size of the card will be resized to the view controller's view size
-    func initCards() {
+    private func initCards() {
         
         self.deck.forEach {
             
@@ -108,7 +108,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     
     // Re-organizes the cards so that the last n ones are
     // slightly slided to the left side
-    func shuffle() {
+    private func shuffle() {
         
         let offsets = self.shuffleOffsets(self.deck
             , eachOffset: SwipCardsViewController.topCardsOffset
@@ -145,7 +145,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     }
     
     // Slides the top view on the deck array to the left
-    func slideTopToLeft() {
+    private func slideTopToLeft() {
         
         // Dont slide to left if there is the last card
         guard self.deck.count > 1 else { return }
@@ -163,7 +163,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     }
     
     // Slides the top view on the deck array to the right
-    func slideTopToRight() {
+    private func slideTopToRight() {
         
         guard self.leftDeck.count > 0 else { return }
         
@@ -201,7 +201,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     
     func isAllowedToSlideToLeft(card: Card) -> Bool {
         
-        let result =  self.deck.first != card
+        let result = self.deck.first != card
         return result
     }
     
