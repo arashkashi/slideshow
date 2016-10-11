@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     var vcc = SwipableScrollableContentViewController()
     var coordinator: Coordinator!
     
+    let vc = SwipCardsViewController()
+    
     @IBOutlet var container: UIView!
     @IBOutlet var bottomContainer: UIView!
     
@@ -21,8 +23,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        let vc = SwipCardsViewController()
     
         vc.attachToContainer(self.container, withViews: Global.getMeViews(4))
 
@@ -33,12 +33,12 @@ class ViewController: UIViewController {
     
     @IBAction func onButton(sender: AnyObject) {
         
-        self.vcc.moveTopItemHorizontally(0.2)
+        self.vc.slideTopToLeft()
     }
     
     @IBAction func moveRight(sender: AnyObject) {
         
-        vcc.slideTopToLeft()
+        vc.slideTopToRight()
     }
 }
 

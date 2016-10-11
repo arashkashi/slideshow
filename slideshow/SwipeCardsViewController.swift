@@ -146,7 +146,7 @@ class SwipCardsViewController: UIViewController, SwipableViewDelegate {
     }
     
     // Slides the top view on the deck array to the left
-    private func slideTopToLeft() {
+    func slideTopToLeft() {
         
         // Dont slide to left if there is the last card
         guard self.deck.count > 1 else { return }
@@ -161,10 +161,12 @@ class SwipCardsViewController: UIViewController, SwipableViewDelegate {
             self.leftDeck.append(last)
             self.shuffle()
         }
+        
+        self.delegate?.onTopItemWillSlideToLeft()
     }
     
     // Slides the top view on the deck array to the right
-    private func slideTopToRight() {
+    func slideTopToRight() {
         
         guard self.leftDeck.count > 0 else { return }
         
@@ -175,6 +177,8 @@ class SwipCardsViewController: UIViewController, SwipableViewDelegate {
         self.deck.append(last)
         
         self.shuffle()
+        
+        self.delegate?.onTopItemWillSlideToRight()
     }
     
     // MARK: Card Delegates
