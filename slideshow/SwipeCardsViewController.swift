@@ -24,7 +24,7 @@ protocol SwipCardsViewControllerDelegate {
 class SwipCardsViewController: UIViewController, CardDelegate {
     
     // Stack of cards, 0 index is bottom, higher indexes are top cards
-    var deck: [Card] = []
+    private(set) var deck: [Card] = []
     
     // Stack of card accumulated on the left side
     var leftDeck: [Card] = []
@@ -39,6 +39,19 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     let animationDuration: NSTimeInterval = 0.2
     
     var delegate: SwipCardsViewControllerDelegate?
+    
+    // MARK: API
+    func attachToContainer(container: UIView, withViews: [Card]) {
+        
+        self.container = container
+        
+        container.addSubview(self.view)
+        
+        self.deck = withViews
+        self.initCards()
+        
+        self.updateViewConstraints()
+    }
     
     // MARK: View Controller Methods
     override func updateViewConstraints() {
@@ -57,8 +70,11 @@ class SwipCardsViewController: UIViewController, CardDelegate {
             $0.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor).active = true
             $0.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor).active = true
             
-            $0.centerXConstraint = $0.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
-            $0.centerXConstraint.active = true
+            if $0.centerXConstraint == nil {
+                
+                $0.centerXConstraint = $0.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
+                $0.centerXConstraint.active = true
+            }
             
             $0.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor).active = true
         }
@@ -108,7 +124,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
                 
                 let view = self.deck[self.deck.count - 1 - index]
                 
-                view.centerXConstraint.constant = offset
+                view.centerXConstraint.setValue(offset, forKey: "constant")// = offset
             }
             
             // Align the bottom cards right on top of each other
@@ -213,7 +229,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     
     // MARK: Helpers
     
-    func shuffleOffsets(views: [Card], eachOffset: CGFloat, numberOfSlidedCards: Int) -> [CGFloat] {
+    private func shuffleOffsets(views: [Card], eachOffset: CGFloat, numberOfSlidedCards: Int) -> [CGFloat] {
         
         var offsets: [CGFloat] = []
         
@@ -230,14 +246,4 @@ class SwipCardsViewController: UIViewController, CardDelegate {
         }
         return offsets.map { $0 * -1 }
     }
-    
-    func attachToContainer(container: UIView) {
-        
-        self.container = container
-        
-        container.addSubview(self.view)
-        
-        self.updateViewConstraints()
-    }
-    
 }

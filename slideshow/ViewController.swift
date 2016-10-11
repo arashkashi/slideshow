@@ -24,9 +24,8 @@ class ViewController: UIViewController {
         
         let vc = SwipCardsViewController()
     
-        vc.attachToContainer(self.container)
-        vc.deck = Global.getMeViews(4)
-        vc.initCards()
+        vc.attachToContainer(self.container, withViews: Global.getMeViews(4))
+
         
         vcc.deck = Global.stackViewController(4)
         vcc.initSubViews()
