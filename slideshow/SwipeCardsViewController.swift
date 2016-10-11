@@ -83,6 +83,13 @@ class SwipCardsViewController: UIViewController, SwipableViewDelegate {
         super.updateViewConstraints()
     }
     
+    func add(item: SwipableView) {
+        
+        self.deck.append(item)
+        self.initCards()
+        self.shuffle()
+    }
+    
     // MARK: Card Manipulation
     
     // This function puts all the cards aligned well on top of eachother.
@@ -110,6 +117,8 @@ class SwipCardsViewController: UIViewController, SwipableViewDelegate {
     // Re-organizes the cards so that the last n ones are
     // slightly slided to the left side
     private func shuffle() {
+        
+        guard self.deck.count > 0 else { return }
         
         let offsets = self.shuffleOffsets(self.deck
             , eachOffset: SwipCardsViewController.topCardsOffset

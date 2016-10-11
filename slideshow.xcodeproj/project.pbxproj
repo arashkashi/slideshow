@@ -16,8 +16,8 @@
 		D91463871DA64E82005F482B /* slideshowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463861DA64E82005F482B /* slideshowTests.swift */; };
 		D91463921DA64E82005F482B /* slideshowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463911DA64E82005F482B /* slideshowUITests.swift */; };
 		D914639F1DA6620A005F482B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463731DA64E82005F482B /* ViewController.swift */; };
-		D91463A11DA66E8E005F482B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463A01DA66E8E005F482B /* Card.swift */; };
-		D91463A21DA66F08005F482B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463A01DA66E8E005F482B /* Card.swift */; };
+		D91463A11DA66E8E005F482B /* SwipableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463A01DA66E8E005F482B /* SwipableViewDelegate.swift */; };
+		D91463A21DA66F08005F482B /* SwipableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91463A01DA66E8E005F482B /* SwipableViewDelegate.swift */; };
 		D93879221DABE7AE005BFAD6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93879211DABE7AE005BFAD6 /* Coordinator.swift */; };
 		D97894A21DA7C6EA008AD971 /* SwipableScrollableContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97894A11DA7C6EA008AD971 /* SwipableScrollableContentViewController.swift */; };
 		D9D16CA11DA7FA9E00C4A7EA /* ScrolableStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D16CA01DA7FA9E00C4A7EA /* ScrolableStackViewController.swift */; };
@@ -56,7 +56,7 @@
 		D914638D1DA64E82005F482B /* slideshowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = slideshowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91463911DA64E82005F482B /* slideshowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideshowUITests.swift; sourceTree = "<group>"; };
 		D91463931DA64E82005F482B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D91463A01DA66E8E005F482B /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		D91463A01DA66E8E005F482B /* SwipableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipableViewDelegate.swift; sourceTree = "<group>"; };
 		D93879211DABE7AE005BFAD6 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D97894A11DA7C6EA008AD971 /* SwipableScrollableContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipableScrollableContentViewController.swift; sourceTree = "<group>"; };
 		D9D16CA01DA7FA9E00C4A7EA /* ScrolableStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrolableStackViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 				D91463781DA64E82005F482B /* Assets.xcassets */,
 				D914637A1DA64E82005F482B /* LaunchScreen.storyboard */,
 				D914637D1DA64E82005F482B /* Info.plist */,
-				D91463A01DA66E8E005F482B /* Card.swift */,
+				D91463A01DA66E8E005F482B /* SwipableViewDelegate.swift */,
 				D90BAC321DA7A2EB00461B6F /* SwipeCardsViewController.swift */,
 				D97894A11DA7C6EA008AD971 /* SwipableScrollableContentViewController.swift */,
 				D9D16CA01DA7FA9E00C4A7EA /* ScrolableStackViewController.swift */,
@@ -283,7 +283,7 @@
 				D9D16CA31DA7FAD500C4A7EA /* GlobalFunctions.swift in Sources */,
 				D90BAC331DA7A2EB00461B6F /* SwipeCardsViewController.swift in Sources */,
 				D9D16CA11DA7FA9E00C4A7EA /* ScrolableStackViewController.swift in Sources */,
-				D91463A11DA66E8E005F482B /* Card.swift in Sources */,
+				D91463A11DA66E8E005F482B /* SwipableViewDelegate.swift in Sources */,
 				D91463721DA64E82005F482B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,7 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D914639F1DA6620A005F482B /* ViewController.swift in Sources */,
-				D91463A21DA66F08005F482B /* Card.swift in Sources */,
+				D91463A21DA66F08005F482B /* SwipableViewDelegate.swift in Sources */,
 				D91463871DA64E82005F482B /* slideshowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

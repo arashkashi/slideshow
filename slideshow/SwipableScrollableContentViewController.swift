@@ -51,6 +51,12 @@ class SwipableScrollableContentViewController: UIViewController {
         super.updateViewConstraints()
     }
     
+    func add(item: ScrollableStackedViewController) {
+        
+        self.deck.append(item)
+        self.initSubViews()
+    }
+    
     func initSubViews() {
         
         for vc in self.deck {

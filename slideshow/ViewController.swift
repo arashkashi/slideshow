@@ -20,25 +20,31 @@ class ViewController: UIViewController {
     @IBOutlet var bottomContainer: UIView!
     
 
+    var counter: Int = 0
+    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
     
-        vc.attachToContainer(self.container, withViews: Global.getMeViews(4))
+        vc.attachToContainer(self.container, withViews: [])//Global.getMeViews(4))
 
-        vcc.attachToContainer(self.bottomContainer, withViews: Global.stackViewController(4))
+        vcc.attachToContainer(self.bottomContainer, withViews: [])//Global.stackViewController(4))
         
         self.coordinator = Coordinator(imageStack: vc, textStack: vcc)
     }
     
     @IBAction func onButton(sender: AnyObject) {
         
-        self.vc.slideTopToLeft()
+//        self.vc.slideTopToLeft()
+        self.vc.add(Global.getMeViews(19)[self.counter])
+        counter = counter + 1
     }
     
     @IBAction func moveRight(sender: AnyObject) {
         
-        vc.slideTopToRight()
+        self.vcc.add(Global.stackViewController(10)[self.counter])
+        counter = counter + 1
     }
 }
 
