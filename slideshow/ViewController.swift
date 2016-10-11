@@ -19,26 +19,16 @@ class ViewController: UIViewController {
     
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         
         let vc = SwipCardsViewController()
     
         vc.attachToContainer(self.container, withViews: Global.getMeViews(4))
 
-        
-        vcc.deck = Global.stackViewController(4)
-        vcc.initSubViews()
-        vcc.attachToContainer(self.bottomContainer)
-        
+        vcc.attachToContainer(self.bottomContainer, withViews: Global.stackViewController(4))
         
         self.coordinator = Coordinator(imageStack: vc, textStack: vcc)
-        
-        
-        
-    
-
-
     }
     
     @IBAction func onButton(sender: AnyObject) {

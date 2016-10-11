@@ -95,7 +95,10 @@ class SwipableScrollableContentViewController: UIViewController {
         self.deck.append(last)
     }
     
-    func attachToContainer(container: UIView) {
+    func attachToContainer(container: UIView, withViews: [ScrollableStackedViewController]) {
+        
+        self.deck = withViews
+        self.initSubViews()
         
         self.container = container
         
