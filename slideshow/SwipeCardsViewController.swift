@@ -21,13 +21,14 @@ protocol SwipCardsViewControllerDelegate {
 }
 
 
-class SwipCardsViewController: UIViewController, CardDelegate {
+
+class SwipCardsViewController: UIViewController, SwipableViewDelegate {
     
     // Stack of cards, 0 index is bottom, higher indexes are top cards
-    private(set) var deck: [Card] = []
+    private(set) var deck: [SwipableView] = []
     
     // Stack of card accumulated on the left side
-    var leftDeck: [Card] = []
+    var leftDeck: [SwipableView] = []
     
     weak var container: UIView?
     
@@ -41,7 +42,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     var delegate: SwipCardsViewControllerDelegate?
     
     // MARK: API
-    func attachToContainer(container: UIView, withViews: [Card]) {
+    func attachToContainer(container: UIView, withViews: [SwipableView]) {
         
         self.container = container
         
@@ -178,14 +179,14 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     
     // MARK: Card Delegates
     
-    func onMovingToLeft(card: Card) {
+    func onMovingToLeft(card: SwipableView) {
         
         self.slideTopToLeft()
         
         self.delegate?.onTopItemWillSlideToLeft()
     }
     
-    func onMovingToRight(card: Card) {
+    func onMovingToRight(card: SwipableView) {
         
         let last = self.leftDeck.removeLast()
         last.userInteractionEnabled = true
@@ -199,7 +200,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
         self.delegate?.onTopItemWillSlideToRight()
     }
     
-    func isAllowedToSlideToLeft(card: Card) -> Bool {
+    func isAllowedToSlideToLeft(card: SwipableView) -> Bool {
         
         let result = self.deck.first != card
         return result
@@ -210,13 +211,13 @@ class SwipCardsViewController: UIViewController, CardDelegate {
         return !self.leftDeck.isEmpty
     }
     
-    func shuffleDeck(card: Card) {
+    func shuffleDeck(card: SwipableView) {
         
         self.shuffle()
         self.delegate?.onTopItemWillReturnToCenter()
     }
     
-    func onBeingDragged(card: Card, offset: CGFloat) {
+    func onBeingDragged(card: SwipableView, offset: CGFloat) {
         
         // When it is being dragged to right pull the card on left inside
         if offset > 0.0 {
@@ -229,7 +230,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     
     // MARK: Helpers
     
-    private func shuffleOffsets(views: [Card], eachOffset: CGFloat, numberOfSlidedCards: Int) -> [CGFloat] {
+    private func shuffleOffsets(views: [SwipableView], eachOffset: CGFloat, numberOfSlidedCards: Int) -> [CGFloat] {
         
         var offsets: [CGFloat] = []
         

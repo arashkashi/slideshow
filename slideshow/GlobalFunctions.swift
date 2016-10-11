@@ -11,16 +11,16 @@ import UIKit
 
 class Global {
     
-    static func newViewWithColor(color: UIColor) -> Card {
+    static func newViewWithColor(color: UIColor) -> SwipableView {
         
-        let view = Card()
+        let view = SwipableView()
         view.backgroundColor = color
         return view
     }
     
-    static func getMeViews(numberOfViews: Int) -> [Card] {
+    static func getMeViews(numberOfViews: Int) -> [SwipableView] {
         
-        var result: [Card] = []
+        var result: [SwipableView] = []
         for i in 1 ... numberOfViews {
             
             var color: UIColor!

@@ -11,20 +11,20 @@ import UIKit
 
 
 
-protocol CardDelegate {
+protocol SwipableViewDelegate {
     
-    func shuffleDeck(card: Card)
-    func onMovingToLeft(card: Card)
-    func onMovingToRight(card: Card)
-    func onBeingDragged(card: Card, offset: CGFloat)
+    func shuffleDeck(view: SwipableView)
+    func onMovingToLeft(view: SwipableView)
+    func onMovingToRight(view: SwipableView)
+    func onBeingDragged(view: SwipableView, offset: CGFloat)
     
     func isAllowedToSlideToright() -> Bool
-    func isAllowedToSlideToLeft(card: Card) -> Bool
+    func isAllowedToSlideToLeft(view: SwipableView) -> Bool
 }
 
 
 
-class Card: UIView {
+class SwipableView: UIView {
     
     var centerXConstraint: NSLayoutConstraint!
     
@@ -34,7 +34,7 @@ class Card: UIView {
     
     private var originalX: CGFloat!
     
-    var delegate: CardDelegate?
+    var delegate: SwipableViewDelegate?
     
     override init(frame: CGRect) {
         
