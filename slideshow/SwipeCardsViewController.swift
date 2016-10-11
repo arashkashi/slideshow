@@ -11,6 +11,17 @@ import UIKit
 
 
 
+
+protocol SwipCardsViewControllerDelegate {
+    
+    func onBeingDragged(normalizedOffset: CGFloat)
+    
+    func onTopItemSlidingToLeft()
+    func onTopItemSlidingToRight()
+    func onTopItemReturningToCenter()
+}
+
+
 class SwipCardsViewController: UIViewController, CardDelegate {
     
     // Stack of cards, 0 index is bottom, higher indexes are top cards
@@ -23,6 +34,12 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     
     // Number of cards slided to the left on the top of stack
     static let numberOfSlidedCards: Int = 3
+    
+    static let topCardsOffset: CGFloat = 5.0
+    
+    let animationDuration: NSTimeInterval = 0.2
+    
+    var delegate: SwipCardsViewControllerDelegate?
     
     // MARK: View Controller Methods
     override func updateViewConstraints() {
@@ -38,17 +55,13 @@ class SwipCardsViewController: UIViewController, CardDelegate {
         
             $0.translatesAutoresizingMaskIntoConstraints = false
             
-            $0.heightConstraint = $0.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor)
-            $0.heightConstraint.active = true
-            
-            $0.widthConstraint = $0.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor)
-            $0.widthConstraint.active = true
+            $0.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor).active = true
+            $0.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor).active = true
             
             $0.centerXConstraint = $0.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
             $0.centerXConstraint.active = true
             
-            $0.centerYConstraint = $0.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor)
-            $0.centerYConstraint.active = true
+            $0.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor).active = true
         }
         
         super.updateViewConstraints()
@@ -82,9 +95,14 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     // slightly slided to the left side
     func shuffle() {
         
-        let offsets = self.shuffleOffsets(self.deck, eachOffset: 10.0, numberOfSlidedCards: SwipCardsViewController.numberOfSlidedCards)
+        let offsets = self.shuffleOffsets(self.deck
+            , eachOffset: SwipCardsViewController.topCardsOffset
+            , numberOfSlidedCards: SwipCardsViewController.numberOfSlidedCards)
         
-        UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+        UIView.animateWithDuration(self.animationDuration
+            , delay: 0
+            , options: UIViewAnimationOptions.CurveEaseOut
+            , animations: {
             
             // Slip the top cards to the left
             for (index, offset) in offsets.enumerate() {
@@ -112,8 +130,9 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     }
     
     // Slides the top view on the deck array to the left
-    func slideToLeft() {
+    func slideTopToLeft() {
         
+        // Dont slide to left if there is the last card
         guard self.deck.count > 1 else { return }
         
         let last = self.deck.removeLast()
@@ -129,7 +148,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     }
     
     // Slides the top view on the deck array to the right
-    func slideToRight() {
+    func slideTopToRight() {
         
         guard self.leftDeck.count > 0 else { return }
         
@@ -144,16 +163,14 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     
     // MARK: Card Delegates
     
-    func moveToLeft(card: Card) {
+    func onMovingToLeft(card: Card) {
         
-        guard self.deck.first != card else { self.shuffle(); return }
+        self.slideTopToLeft()
         
-        self.slideToLeft()
+        self.delegate?.onTopItemSlidingToLeft()
     }
     
-    func moveToright(card: Card) {
-        
-        guard self.leftDeck.isEmpty == false else { self.shuffle(); return }
+    func onMovingToRight(card: Card) {
         
         let last = self.leftDeck.removeLast()
         last.userInteractionEnabled = true
@@ -163,20 +180,36 @@ class SwipCardsViewController: UIViewController, CardDelegate {
         self.deck.append(last)
         
         self.shuffle()
+        
+        self.delegate?.onTopItemSlidingToRight()
+    }
+    
+    func isAllowedToSlideToLeft(card: Card) -> Bool {
+        
+        let result =  self.deck.first != card
+        return result
+    }
+    
+    func isAllowedToSlideToright() -> Bool {
+        
+        return !self.leftDeck.isEmpty
     }
     
     func shuffleDeck(card: Card) {
         
         self.shuffle()
+        self.delegate?.onTopItemReturningToCenter()
     }
     
-    func beingDragged(card: Card, offset: CGFloat) {
+    func onBeingDragged(card: Card, offset: CGFloat) {
         
         // When it is being dragged to right pull the card on left inside
         if offset > 0.0 {
             
             self.leftDeck.last?.centerXConstraint.constant = -1 * card.frame.size.width + offset
         }
+        
+        self.delegate?.onBeingDragged(offset / card.frame.size.width)
     }
     
     // MARK: Helpers

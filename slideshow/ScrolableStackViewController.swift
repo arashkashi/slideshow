@@ -29,6 +29,9 @@ class ScrollableStackedViewController: UIViewController {
     
     weak var container: UIView?
     
+    var centerXConstraint: NSLayoutConstraint!
+    let animationDuration: NSTimeInterval = 0.2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +45,7 @@ class ScrollableStackedViewController: UIViewController {
         scrollView.addSubview(stackView)
         view.addSubview(scrollView)
         
-        for view in self.getMeViews(20) {
+        for view in self.getMeViews(4) {
             
             stackView.addArrangedSubview(view)
         }
@@ -63,18 +66,75 @@ class ScrollableStackedViewController: UIViewController {
         
         super.viewDidAppear(animated)
         
-        scrollView.contentSize = stackView.frame.size
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: stackView.frame.size.height)
     }
     
     override func updateViewConstraints() {
         
         stackView.topAnchor.constraintEqualToAnchor(scrollView.topAnchor).active = true
+        stackView.leftAnchor.constraintEqualToAnchor(scrollView.leftAnchor).active = true
         
         scrollView.anchorEdges(view)
         
         super.updateViewConstraints()
     }
     
+    func moveViewToLeft(completion: (() -> ())?) {
+        
+        UIView.animateWithDuration(self.animationDuration, delay: 0, options: .CurveEaseOut, animations: {
+            
+            self.centerXConstraint.constant = -1 * self.view.frame.size.width
+            self.container?.layoutIfNeeded()
+            
+            }) { _ in
+                completion?()
+        }
+    }
+    
+    func moveCenterXTo(normalizedOffset: CGFloat) {
+        
+        self.centerXConstraint.constant = -1 * normalizedOffset * self.view.frame.size.width
+        self.container?.layoutIfNeeded()
+    }
+    
+    func makeAlpha() {
+        
+        self.view.alpha = 0.0
+    }
+    
+    func moveViewToRight(completion: (() -> ())?) {
+        
+        UIView.animateWithDuration(self.animationDuration, delay: 0, options: .CurveEaseOut, animations: {
+            
+            self.centerXConstraint.constant = 0
+            self.container?.layoutIfNeeded()
+            
+        }) { _ in
+            completion?()
+        }
+    }
+    
+    func fadeViewIn(completion: (()->())?) {
+        
+        UIView.animateWithDuration(self.animationDuration, delay: 0, options: .CurveEaseOut, animations: {
+            
+            self.view.alpha = 1.0
+            }) { _ in
+                completion?()
+        }
+    }
+    
+    func fadeViewOut(completion: (()->())?) {
+        
+        UIView.animateWithDuration(self.animationDuration, delay: 0, options: .CurveEaseOut, animations: {
+            
+            self.view.alpha = 0.0
+            }) { _ in
+                completion?()
+        }
+    }
+    
+    // MARK: Helpers
     func newViewWithColor(color: UIColor) -> UIView {
         
         let view = UIView()

@@ -14,49 +14,31 @@ import UIKit
 protocol CardDelegate {
     
     func shuffleDeck(card: Card)
-    func moveToLeft(card: Card)
-    func moveToright(card: Card)
-    func beingDragged(card: Card, offset: CGFloat)
+    func onMovingToLeft(card: Card)
+    func onMovingToRight(card: Card)
+    func onBeingDragged(card: Card, offset: CGFloat)
+    
+    func isAllowedToSlideToright() -> Bool
+    func isAllowedToSlideToLeft(card: Card) -> Bool
 }
+
 
 
 class Card: UIView {
     
     var centerXConstraint: NSLayoutConstraint!
-    var centerYConstraint: NSLayoutConstraint!
     
-    var heightConstraint: NSLayoutConstraint!
-    var widthConstraint: NSLayoutConstraint!
-    
-    lazy var label: UILabel = {
-        
-        let label = UILabel()
-        return label
-    }()
-    
-    var labelText: String = ""  {
-        
-        didSet {
-            
-            self.label.text = self.labelText
-        }
-    }
+    let animationDuration: NSTimeInterval = 0.2
     
     var container: UIView?
     
-    var originalX: CGFloat!
+    private var originalX: CGFloat!
     
     var delegate: CardDelegate?
     
     override init(frame: CGRect) {
         
         super.init(frame: frame)
-        
-        self.addSubview(self.label)
-        
-        label.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
-        label.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
-        label.translatesAutoresizingMaskIntoConstraints = false
         
         self.setupPanGestureRecognizer()
     }
@@ -74,7 +56,10 @@ class Card: UIView {
     
     func moveToLeft(completion: (() -> ())?) {
         
-        UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+        UIView.animateWithDuration(self.animationDuration
+            , delay: 0
+            , options: UIViewAnimationOptions.CurveEaseOut
+            , animations: {
             
             self.centerXConstraint.constant = -1 * self.frame.size.width
             self.container?.layoutIfNeeded()
@@ -86,13 +71,16 @@ class Card: UIView {
     func afterSwipAction() {
         
         // If the card is pulled to the left then take it to the left
-        if self.centerXConstraint.constant < -1 * self.frame.size.width / 2 {
+        if let isMovePermitted = self.delegate?.isAllowedToSlideToLeft(self)
+            where isMovePermitted && self.centerXConstraint.constant < -1 * self.frame.size.width / 2 {
             
-            self.delegate?.moveToLeft(self)
+            self.delegate?.onMovingToLeft(self)
         }
-        else if self.centerXConstraint.constant > self.frame.size.width / 2 {
+        else if let isMovePermitted = self.delegate?.isAllowedToSlideToright()
+            where isMovePermitted && (self.centerXConstraint.constant > self.frame.size.width / 2)
+                {
             
-            self.delegate?.moveToright(self)
+            self.delegate?.onMovingToRight(self)
         } else {
             
             self.delegate?.shuffleDeck(self)
@@ -109,7 +97,7 @@ class Card: UIView {
             break
         case .Changed:
             self.centerXConstraint.constant = xFromCenter - self.originalX
-            self.delegate?.beingDragged(self, offset: xFromCenter - self.originalX)
+            self.delegate?.onBeingDragged(self, offset: xFromCenter - self.originalX)
             break
         case .Ended:
             afterSwipAction()

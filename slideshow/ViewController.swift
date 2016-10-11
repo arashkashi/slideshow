@@ -10,27 +10,48 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var deck: [Card] = []
     
-    var leftDeck: [Card] = []
-    
-    var initiation: Bool = false
+    var vcc = SlidableScrollableTextContent()
+    var coordinator: Coordinator!
     
     @IBOutlet var container: UIView!
+    @IBOutlet var bottomContainer: UIView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.deck = Global.getMeViews(8)
-        
-//        self.initCards(self.deck, in: self.container)
         
         let vc = SwipCardsViewController()
     
         vc.attachToContainer(self.container)
-        vc.deck = Global.getMeViews(8)
+        vc.deck = Global.getMeViews(4)
         vc.initCards()
+        
+        vcc.deck = Global.stackViewController(4)
+        vcc.initSubViews()
+        vcc.attachToContainer(self.bottomContainer)
+        
+        
+        self.coordinator = Coordinator(imageStack: vc, textStack: vcc)
+        
+        
+        
+    
+
+
+    }
+    
+    @IBAction func onButton(sender: AnyObject) {
+        
+        self.vcc.moveTopItemHorizontally(0.2)
+        
+//        vcc.slideTopToLeft()
+    }
+    
+    @IBAction func moveRight(sender: AnyObject) {
+        
+        vcc.slideTopToLeft()
     }
     
 }

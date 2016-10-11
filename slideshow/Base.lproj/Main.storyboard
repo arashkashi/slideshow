@@ -18,6 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVC-yx-3Ek">
+                                <rect key="frame" x="277" y="570" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zBl-7O-bqm"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffj-do-m99">
                                 <rect key="frame" x="70" y="297" width="460" height="219"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -26,20 +33,32 @@
                                 <rect key="frame" x="70" y="70" width="460" height="195"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRd-f6-NjG">
+                                <rect key="frame" x="373" y="570" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="moveRight:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kqs-M4-hT3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zVC-yx-3Ek" secondAttribute="bottom" id="1UG-7R-Sxo"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="drc-w4-3Jn" secondAttribute="bottom" constant="335" id="4TV-W1-Fsf"/>
                             <constraint firstItem="ffj-do-m99" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="6vG-rQ-pRC"/>
                             <constraint firstItem="drc-w4-3Jn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="An7-0m-Q8a"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ffj-do-m99" secondAttribute="trailing" constant="50" id="KPb-VZ-9Av"/>
+                            <constraint firstItem="nRd-f6-NjG" firstAttribute="leading" secondItem="zVC-yx-3Ek" secondAttribute="trailing" constant="50" id="Ngi-Vb-FGX"/>
                             <constraint firstItem="ffj-do-m99" firstAttribute="top" secondItem="drc-w4-3Jn" secondAttribute="bottom" constant="32" id="RNf-OE-B91"/>
                             <constraint firstAttribute="trailingMargin" secondItem="drc-w4-3Jn" secondAttribute="trailing" constant="50" id="V0L-zi-88G"/>
                             <constraint firstItem="drc-w4-3Jn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="iRg-dk-nSu"/>
+                            <constraint firstItem="zVC-yx-3Ek" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qIP-Gc-BFv"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ffj-do-m99" secondAttribute="bottom" constant="84" id="yx1-1f-cGX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nRd-f6-NjG" secondAttribute="bottom" id="zDc-ph-GmA"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomContainer" destination="ffj-do-m99" id="EnJ-Od-Ibd"/>
                         <outlet property="container" destination="drc-w4-3Jn" id="YUy-oL-a5P"/>
                     </connections>
                 </viewController>

@@ -34,4 +34,17 @@ class Global {
         
         return result
     }
+    
+    static func stackViewController(numberOfViews: Int = 8) -> [ScrollableStackedViewController] {
+        
+        var result: [ScrollableStackedViewController] = []
+        
+        for _ in 1 ... numberOfViews {
+            
+            result.append(ScrollableStackedViewController())
+        }
+        
+        return result
+        
+    }
 }
