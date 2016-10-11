@@ -34,15 +34,12 @@ class ViewController: UIViewController {
     @IBAction func onButton(sender: AnyObject) {
         
         self.vcc.moveTopItemHorizontally(0.2)
-        
-//        vcc.slideTopToLeft()
     }
     
     @IBAction func moveRight(sender: AnyObject) {
         
         vcc.slideTopToLeft()
     }
-    
 }
 
 
