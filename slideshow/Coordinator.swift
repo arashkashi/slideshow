@@ -15,9 +15,9 @@ import UIKit
 class Coordinator {
     
     let imageStack: SwipCardsViewController
-    let textStack: SlidableScrollableTextContent
+    let textStack: SwipableScrollableContentViewController
     
-    init(imageStack: SwipCardsViewController, textStack: SlidableScrollableTextContent ) {
+    init(imageStack: SwipCardsViewController, textStack: SwipableScrollableContentViewController ) {
         
         self.imageStack = imageStack
         self.textStack = textStack

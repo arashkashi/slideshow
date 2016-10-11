@@ -11,7 +11,7 @@ import UIKit
 
 
 
-class SlidableScrollableTextContent: UIViewController {
+class SwipableScrollableContentViewController: UIViewController {
     
     var deck: [ScrollableStackedViewController] = []
     
@@ -20,7 +20,6 @@ class SlidableScrollableTextContent: UIViewController {
     let animationDuration: NSTimeInterval = 0.2
     
     weak var container: UIView?
-    
     
     override func updateViewConstraints() {
         
@@ -40,17 +39,16 @@ class SlidableScrollableTextContent: UIViewController {
             $0.view.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor).active = true
             $0.view.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor).active = true
             
-            $0.centerXConstraint = $0.view.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
-            $0.centerXConstraint.active = true
+            if $0.centerXConstraint == nil {
+                
+                $0.centerXConstraint = $0.view.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
+                $0.centerXConstraint.active = true
+            }
+            
             $0.view.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor).active = true
         }
         
         super.updateViewConstraints()
-    }
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
     }
     
     func initSubViews() {
@@ -64,7 +62,7 @@ class SlidableScrollableTextContent: UIViewController {
             
             if vc != self.deck.last {
                 
-                vc.makeAlpha()
+                vc.view.alpha = 0.0
             }
         }
         

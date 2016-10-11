@@ -97,11 +97,6 @@ class ScrollableStackedViewController: UIViewController {
         self.container?.layoutIfNeeded()
     }
     
-    func makeAlpha() {
-        
-        self.view.alpha = 0.0
-    }
-    
     func moveViewToRight(completion: (() -> ())?) {
         
         UIView.animateWithDuration(self.animationDuration, delay: 0, options: .CurveEaseOut, animations: {

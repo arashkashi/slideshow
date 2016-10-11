@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     
-    var vcc = SlidableScrollableTextContent()
+    var vcc = SwipableScrollableContentViewController()
     var coordinator: Coordinator!
     
     @IBOutlet var container: UIView!
