@@ -11,14 +11,13 @@ import UIKit
 
 
 
-
 protocol SwipCardsViewControllerDelegate {
     
-    func onBeingDragged(normalizedOffset: CGFloat)
+    func onTopItemBeingDragged(normalizedOffset: CGFloat)
     
-    func onTopItemSlidingToLeft()
-    func onTopItemSlidingToRight()
-    func onTopItemReturningToCenter()
+    func onTopItemWillSlideToLeft()
+    func onTopItemWillSlideToRight()
+    func onTopItemWillReturnToCenter()
 }
 
 
@@ -167,7 +166,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
         
         self.slideTopToLeft()
         
-        self.delegate?.onTopItemSlidingToLeft()
+        self.delegate?.onTopItemWillSlideToLeft()
     }
     
     func onMovingToRight(card: Card) {
@@ -181,7 +180,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
         
         self.shuffle()
         
-        self.delegate?.onTopItemSlidingToRight()
+        self.delegate?.onTopItemWillSlideToRight()
     }
     
     func isAllowedToSlideToLeft(card: Card) -> Bool {
@@ -198,7 +197,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
     func shuffleDeck(card: Card) {
         
         self.shuffle()
-        self.delegate?.onTopItemReturningToCenter()
+        self.delegate?.onTopItemWillReturnToCenter()
     }
     
     func onBeingDragged(card: Card, offset: CGFloat) {
@@ -209,7 +208,7 @@ class SwipCardsViewController: UIViewController, CardDelegate {
             self.leftDeck.last?.centerXConstraint.constant = -1 * card.frame.size.width + offset
         }
         
-        self.delegate?.onBeingDragged(offset / card.frame.size.width)
+        self.delegate?.onTopItemBeingDragged(offset / card.frame.size.width)
     }
     
     // MARK: Helpers

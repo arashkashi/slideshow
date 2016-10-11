@@ -32,22 +32,22 @@ class Coordinator {
 
 extension Coordinator: SwipCardsViewControllerDelegate {
     
-    func onBeingDragged(normalizedOffset: CGFloat) {
+    func onTopItemBeingDragged(normalizedOffset: CGFloat) {
         
         self.textStack.moveTopItemHorizontally(-1 * normalizedOffset)
     }
     
-    func onTopItemSlidingToLeft() {
+    func onTopItemWillSlideToLeft() {
         
         self.textStack.slideTopToLeft()
     }
     
-    func onTopItemSlidingToRight() {
+    func onTopItemWillSlideToRight() {
         
         self.textStack.slideTopToRight()
     }
     
-    func onTopItemReturningToCenter() {
+    func onTopItemWillReturnToCenter() {
         
         UIView.animateWithDuration(self.textStack.animationDuration) {
             self.textStack.moveTopItemHorizontally(0)

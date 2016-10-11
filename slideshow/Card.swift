@@ -47,13 +47,6 @@ class Card: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupPanGestureRecognizer() {
-        
-        let panRecognizer = UIPanGestureRecognizer()
-        panRecognizer.addTarget(self, action: #selector(beingDragged(_:)))
-        addGestureRecognizer(panRecognizer)
-    }
-    
     func moveToLeft(completion: (() -> ())?) {
         
         UIView.animateWithDuration(self.animationDuration
@@ -66,6 +59,15 @@ class Card: UIView {
             }) { _ in
                 completion?()
         }
+    }
+    
+    // MARK: Gesture recognizer
+    
+    func setupPanGestureRecognizer() {
+        
+        let panRecognizer = UIPanGestureRecognizer()
+        panRecognizer.addTarget(self, action: #selector(beingDragged(_:)))
+        addGestureRecognizer(panRecognizer)
     }
     
     func afterSwipAction() {
